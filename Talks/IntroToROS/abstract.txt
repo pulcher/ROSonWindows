@@ -1,0 +1,17 @@
+Title:
+
+Abstract:
+Have you heard or ROS?  It has been around since 2007, widely used in industry, 
+and works on a wide range of hardware.  Although, it stands for Robot Operating
+System, it isn't.  It is actually a system for operating robots! 
+
+Possible Titles:
+Start programming your robots like the big folks do!!!
+
+
+Abstract possible content:
+From tiny toys on supermarket shelves to building-sized material haulers, today’s robots come in all shapes and sizes. And thanks to a range of advancements in their components and technologies, they are also becoming more capable and cost effective.
+
+Robots may be the ultimate intelligent edge device. A robot needs to observe the world using many sensors, and reason about what it has observed in order to develop a plan of action. It then needs to perform those actions quickly and safely, often with limited internet connectivity.
+
+One of the most popular frameworks for building that complex functionality is the Robot Operating System (ROS) maintained by Open Robotics, a mature, open source robotics framework used worldwide for commercial and research applications. ROS’ interoperability, body of samples, and community make it valuable for building an automated solution.
