@@ -7,9 +7,33 @@ System, it isn't.  It is actually a system for operating robots!
 
 Possible Titles:
 Start programming your robots like the big folks do!!!
-
+Don't start your robot from scratch there is already a well built open source solution!
+What is the Robot Operating System (ROS), and how does it work?
+Make your robotic dreams a reality
+Robotics Operating System Brings Open Source Approach to Robotics Development
+Bring open source to a robot near you
+Use open source to build a better robot!
+Use open source in your next robotic project!
 
 Abstract possible content:
+Our robot overlords are getting closer to reality everyday.
+Between now and the time where they take over our planet, they will be more and more involved in our daily lives.
+However, the process of designing and building these robots isn’t as simple as most would hope. 
+Most new robitc projects often start from scratch.  The developers have to re-implement the archetecture and infraostructure that all of those algorithms are built upon.
+In other words they have to “re-invent the wheel” almost every time. 
+Despite its name, Robot Operating System (ROS) is not actually an operating system. The open source system runs on top of both Linux and Windows!
+ROS is a set of tools for creating, configuring, building, debugging and managing robotic systems.   
+We will go over how to get started, demonstrate the features, provide you with all of my samples, and where this is headed in the future.
+
+From the article:
+
+What is the Robot Operating System (ROS), and how does it work?
+
+Despite its name, ROS is not actually an operating system. It runs atop a wide variety of operating systems, usually Linux.
+
+The best way to describe ROS to a new technical audience is to say that ROS is to robotics as Ruby on Rails or Node is to web development. This is to say ROS is a set of tools for creating, configuring, building, debugging and managing complex robotic systems. At its core, ROS is a publish/subscribe system that can be used to share data and signals between small computer programs that make up a larger robotic system. For example, if you have a camera, and you want to hook it up to a large industrial arm, ROS allows you to connect to these components, send and receive data to or from them, and write code to glue behaviors together.
+
+
 From tiny toys on supermarket shelves to building-sized material haulers, today’s robots come in all shapes and sizes. And thanks to a range of advancements in their components and technologies, they are also becoming more capable and cost effective.
 
 Robots may be the ultimate intelligent edge device. A robot needs to observe the world using many sensors, and reason about what it has observed in order to develop a plan of action. It then needs to perform those actions quickly and safely, often with limited internet connectivity.
