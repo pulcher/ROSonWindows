@@ -2,12 +2,12 @@ Title:
 Industrial-strength Open Source archetecture for robotic systems.
 
 Abstract:
-Our robot overlords are getting closer to reality everyday. Between now and the time where they take over our planet, 
+Our robot overlords are getting closer to reality every day. Between now and the time when they take over our planet, 
 they will be more and more involved in our daily lives. However, the process of designing and building these robots 
-isn’t as simple as most would hope. Most new robitc projects often start from scratch. The developers have to 
-re-implement the archetecture and infraostructure that all of those algorithms are built upon. In other words 
+isn’t as simple as most would hope. Most new robotic projects often start from scratch. Developers have to 
+re-implement the architecture  and infrastructure that all of those algorithms are built upon. In other words, 
 they have to “re-invent the wheel” almost every time. Despite its name, Robot Operating System (ROS) is not actually 
-an operating system. The open source system runs on top of both Linux and Windows! ROS is a set of tools for creating, 
+an operating system. The Open Source system runs on top of both Linux and Windows! ROS is a set of tools for creating, 
 configuring, building, debugging and managing robotic systems. We will go over how to get started, demonstrate the 
 features, provide you with all of my samples, and where this is headed in the future.
 
