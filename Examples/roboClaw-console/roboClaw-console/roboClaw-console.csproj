@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RoboclawClassLib\RoboclawClassLib\RoboclawClassLib.csproj" />
+    <ProjectReference Include="..\RoboclawClassLib-NET-Core\RoboclawClassLib-NET-Core.csproj" />
   </ItemGroup>
 
 </Project>
