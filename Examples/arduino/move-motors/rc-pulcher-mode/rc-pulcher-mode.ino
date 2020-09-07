@@ -11,10 +11,12 @@ Servo myservo2;  // create servo object to control a Roboclaw channel
 #define MINMIN 1120
 #define MIN 1250
 #define MINHALF 1320
+#define MINHALFHALF 1410
 #define MAXMAX 1920
 #define MAX 1750 
 #define MAXHALF 1625
-#define STOP 1520
+#define MAXHALFHALF 1563
+#define STOP 1500
 
 void setup() 
 { 
@@ -24,57 +26,72 @@ void setup()
     }
   myservo1.attach(5);  // attaches the RC signal on pin 5 to the servo object 
   myservo2.attach(6);  // attaches the RC signal on pin 6 to the servo object 
+
+  myservo1.writeMicroseconds(STOP);  //Stop   
+  myservo2.writeMicroseconds(STOP);  //Stop   
+  delay(2000);
 } 
  
 
 void loop() 
 { 
+  
+  stop();
+
+  Serial.println("FULL reveree");
+  myservo1.writeMicroseconds(MINMIN);  //full reverse
+  delay(1000); 
+
+  stop();
+
+  Serial.println("FULL forward");
+  myservo1.writeMicroseconds(MAXMAX);  //full forward   
+  delay(1000); 
+
+  stop();
+  
+  Serial.println("Half Reverse");
+  myservo1.writeMicroseconds(MINHALF);  // Half Reverse
+  delay(1000); 
+
+  stop();
+
+  Serial.println("Slow Reverse");
+  myservo1.writeMicroseconds(MINHALFHALF);  // Slow Reverse
+  delay(1000); 
+
+  stop();
+
+  Serial.println("slow forward");
+  myservo1.writeMicroseconds(MAXHALFHALF);  //slow forward
+  delay(1000); 
+
+  stop();
+
+  Serial.println("spin turn right");
+  myservo2.writeMicroseconds(MINMIN);  //Spin Right
+  delay(1000); 
+
+  stop();
+
+  Serial.println("spin turn left");
+  myservo2.writeMicroseconds(MAXMAX);  //Spin left   
+  delay(1000); 
+
+  stop();
+
+  Serial.println("full forward, hard right turn");
+  myservo1.writeMicroseconds(MAXMAX);  //full forward   
+  myservo2.writeMicroseconds(MINMIN);  //full right
+  delay(1000);
+
+  stop();
+}
+
+void stop() 
+{
+  Serial.println("stop");
   myservo1.writeMicroseconds(STOP);  //Stop   
   myservo2.writeMicroseconds(STOP);  //Stop   
   delay(2000);
-
-  Serial.println("MIN forward");
-  myservo1.writeMicroseconds(MIN);  //full forward   
-  delay(1000); 
-
-  myservo1.writeMicroseconds(STOP);  //Stop   
-  myservo2.writeMicroseconds(STOP);  //Stop   
-  delay(2000);
-
-  Serial.println("MINHALF forward");
-  myservo1.writeMicroseconds(MINHALF);  //half forward   
-  delay(1000); 
-
-  myservo1.writeMicroseconds(STOP);  //Stop   
-  myservo2.writeMicroseconds(STOP);  //Stop   
-  delay(2000);
-
-  Serial.println("MINMIN forward");
-  myservo1.writeMicroseconds(MINMIN);  //full forward   
-  delay(1000); 
-/*
-  Serial.println("stop");
-  myservo1.writeMicroseconds(STOP);  //stop   
-  delay(2000); 
-
-  Serial.println("full reverse");
-  myservo1.writeMicroseconds(MAX);  //full reverse
-  delay(1000); 
-
-  Serial.println("stop");
-  myservo1.writeMicroseconds(STOP);  //Stop   
-  delay(2000); 
-
-  Serial.println("full turn left");
-  myservo2.writeMicroseconds(MIN);  //full turn left   
-  delay(1000); 
-
-  Serial.println("stop");
-  myservo2.writeMicroseconds(STOP);  //Stop   
-  delay(2000); 
-
-  Serial.println("full turn right");
-  myservo2.writeMicroseconds(MAX);  //full turn right   
-  delay(1000); 
-  */
 }
