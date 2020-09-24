@@ -22,7 +22,7 @@ void setup()
 { 
   Serial.begin(115200);
     while (!Serial) {
-    ; // wait for serial port to connect. Needed for native USB port only
+    ; // wait for serial port to connect. Needed for native USB port onlyUFG
     }
   myservo1.attach(5);  // attaches the RC signal on pin 5 to the servo object 
   myservo2.attach(6);  // attaches the RC signal on pin 6 to the servo object 
@@ -50,6 +50,18 @@ void loop()
 
   stop();
   
+  Serial.println("Half forward");
+  myservo1.writeMicroseconds(MAXHALF);  //half forward
+  delay(1000); 
+
+  stop();
+  
+  Serial.println("slow forward");
+  myservo1.writeMicroseconds(MAXHALFHALF);  //slow forward
+  delay(1000); 
+
+  stop();
+  
   Serial.println("Half Reverse");
   myservo1.writeMicroseconds(MINHALF);  // Half Reverse
   delay(1000); 
@@ -62,27 +74,54 @@ void loop()
 
   stop();
 
-  Serial.println("slow forward");
-  myservo1.writeMicroseconds(MAXHALFHALF);  //slow forward
+  Serial.println("spin turn right full");
+  myservo2.writeMicroseconds(MINMIN);  // full Spin Right
   delay(1000); 
 
   stop();
 
-  Serial.println("spin turn right");
-  myservo2.writeMicroseconds(MINMIN);  //Spin Right
+  Serial.println("spin turn left full");
+  myservo2.writeMicroseconds(MAXMAX);  // full Spin left   
   delay(1000); 
 
   stop();
 
-  Serial.println("spin turn left");
-  myservo2.writeMicroseconds(MAXMAX);  //Spin left   
+  Serial.println("spin turn right slow");
+  myservo2.writeMicroseconds(MINHALFHALF);  // slow Spin Right
   delay(1000); 
 
   stop();
 
+  Serial.println("spin turn left slow");
+  myservo2.writeMicroseconds(MAXHALFHALF);  // slow Spin left   
+  delay(1000); 
+
+  stop();
+  
   Serial.println("full forward, hard right turn");
   myservo1.writeMicroseconds(MAXMAX);  //full forward   
   myservo2.writeMicroseconds(MINMIN);  //full right
+  delay(1000);
+
+  stop();
+
+  Serial.println("full forward, slow right turn");
+  myservo1.writeMicroseconds(MAXMAX);  //full forward   
+  myservo2.writeMicroseconds(MINHALFHALF);  //full right
+  delay(1000);
+
+  stop();
+
+    Serial.println("full reverse, hard right turn");
+  myservo1.writeMicroseconds(MINMIN);  //full reverse   
+  myservo2.writeMicroseconds(MINMIN);  //full right
+  delay(1000);
+
+  stop();
+
+  Serial.println("full reverse, slow right turn");
+  myservo1.writeMicroseconds(MINMIN);  //full reverse   
+  myservo2.writeMicroseconds(MINHALFHALF);  //full right
   delay(1000);
 
   stop();
