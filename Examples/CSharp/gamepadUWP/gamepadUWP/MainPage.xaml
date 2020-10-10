@@ -62,11 +62,11 @@
             <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="X:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
-                    <TextBlock x:Name="leftXValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                    <TextBlock x:Name="LeftXValue" Text="0.000000" FontSize="12" Foreground="White"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
-                    <TextBlock x:Name="leftYValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                    <TextBlock x:Name="LeftYValue" Text="0.000000" FontSize="12" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
 
@@ -75,30 +75,108 @@
             <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="X:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
-                    <TextBlock x:Name="leftXDeg" Text="0.000000" FontSize="12" Foreground="White"/>
+                    <TextBlock x:Name="LeftXDeg" Text="0.000000" FontSize="12" Foreground="White"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
-                    <TextBlock x:Name="leftYDeg" Text="0.000000" FontSize="12" Foreground="White"/>
+                    <TextBlock x:Name="LeftYDeg" Text="0.000000" FontSize="12" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Left Trigger:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
-                    <TextBlock x:Name="leftTrigger" Text="0.000000" FontSize="12" Foreground="White"/>
+                    <TextBlock x:Name="LeftTrigger" Text="0.000000" FontSize="12" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
 
         </Grid>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
-            <TextBlock Text="Right" FontSize="12" Foreground="White"  HorizontalAlignment="Center"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock Text="Joystick" FontSize="12" Foreground="White" Margin="0,0,5,0"/>
-                <TextBlock x:Name="RightDeadZone" Text="Dead Zone" FontSize="12" Foreground="Yellow"/>
-            </StackPanel>
-        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
 
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="3"  Text="Right Joystick" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="X:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="RightXValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="RightYValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="RightDeadZone" Text="DZ" FontSize="12" Foreground="Yellow" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="X:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="RightXDeg" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="RightYDeg" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <TextBlock Text="Right Trigger:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="RightTrigger" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height=".5*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Grid.ColumnSpan="3"  Text="D Pad" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="X:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="DPadXValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="DPadYValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+            <TextBlock Grid.Row="1" Grid.Column="1" x:Name="DPadDeadZone" Text="DZ" FontSize="12" Foreground="Yellow" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+            <StackPanel Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="X:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="DPadXDeg" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="DPadYDeg" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Page>
