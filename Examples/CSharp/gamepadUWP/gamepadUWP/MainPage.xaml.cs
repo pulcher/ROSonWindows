@@ -14,8 +14,6 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace gamepadUWP
 {
     public sealed partial class MainPage : Page
@@ -29,8 +27,6 @@ namespace gamepadUWP
             this.InitializeComponent();
 
             GameControllersSetup();
-
-            //GetGamepads();
 
             GetRawGameControllers();
         }
@@ -72,9 +68,7 @@ namespace gamepadUWP
 
         private void GetRawGameControllers()
         {
-            var test = RawGameController.RawGameControllers;
-
-            foreach (var controller in test)
+            foreach (var controller in myGamepads)
             {
                 var sometihng = controller.DisplayName;
                 var somethingElse = controller.ButtonCount;
@@ -82,59 +76,5 @@ namespace gamepadUWP
                 var ugh = string.Empty;
             }
         }
-
-        //private void GetGamepads()
-        //{
-
-        //    foreach (var gamepad in Gamepad.Gamepads)
-        //    {
-        //        // Check if the gamepad is already in myGamepads; if it isn't, add it.
-        //        bool gamepadInList = myGamepads.Contains(gamepad);
-
-        //        if (!gamepadInList)
-        //        {
-        //            // This code assumes that you're interested in all gamepads.
-        //            myGamepads.Add(gamepad);
-        //        }
-        //    }
-        //}
     }
 }
-
-
-/*
-            // setup delegates for adding/removing to the gamepad list
-            Gamepad.GamepadAdded += (object sender, Gamepad e) =>
-            {
-                // Check if the just-added gamepad is already in myGamepads; if it isn't, add
-                // it.
-                lock (myLock)
-                {
-                    bool gamepadInList = myGamepads.Contains(e);
-
-                    if (!gamepadInList)
-                    {
-                        myGamepads.Add(e);
-                    }
-                }
-            };
-
-            Gamepad.GamepadRemoved += (object sender, Gamepad e) =>
-            {
-                lock (myLock)
-                {
-                    int indexRemoved = myGamepads.IndexOf(e);
-
-                    if (indexRemoved > -1)
-                    {
-                        if (mainGamepad == myGamepads[indexRemoved])
-                        {
-                            mainGamepad = null;
-                        }
-
-                        myGamepads.RemoveAt(indexRemoved);
-                    }
-                }
-            };
- */
-
