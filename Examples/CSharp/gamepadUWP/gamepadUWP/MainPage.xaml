@@ -26,22 +26,7 @@
 
         <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Orientation="Vertical">
             <TextBlock Foreground="White" FontSize="14" Text="Buttons" HorizontalAlignment="Center" Margin="0,0,0,0"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <TextBlock x:Name="btn00" Text="00" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn01" Text="01" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn02" Text="02" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn03" Text="03" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn04" Text="04" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn05" Text="05" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn06" Text="06" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn07" Text="07" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn08" Text="08" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn09" Text="09" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn10" Text="10" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn11" Text="11" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn12" Text="12" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn13" Text="13" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
-                <TextBlock x:Name="btn14" Text="14" Foreground="Yellow" FontSize="12" Margin="0,0,5,0"/>
+            <StackPanel x:Name="ButtonPanelHolder" Orientation="Horizontal" HorizontalAlignment="Center">
             </StackPanel>
         </StackPanel>
 
