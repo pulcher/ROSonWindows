@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LattePanda.Firmata;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,11 +25,25 @@ namespace gamepadUWP
         private readonly object myLock = new object();
         private readonly Brush DefaultButtonBackground = new SolidColorBrush(Colors.AntiqueWhite);
         private readonly Brush HighlightedButtonBackground = new SolidColorBrush(Colors.Orange);
+        private readonly Brush DeadzoneNormal = new SolidColorBrush(Colors.Yellow);
+        private readonly Brush DeadzoneActivated = new SolidColorBrush(Colors.SpringGreen);
+        private readonly double offsetBias = 0.5d;
+        private double deadZoneRadius = 0.05d;
+        private double[] currentRadi = new double[2];
         private List<RawGameController> myGamepads = new List<RawGameController>();
         private RawGameController mainGamepad;
         private bool[] buttonArray;
         private GameControllerSwitchPosition[] switchArray;
         private double[] axisArray;
+        private int[] degrees = new int[4];
+
+        // known degrees
+        private readonly int StopDegrees = 91;
+        private readonly int MinDegrees = 0;
+        private readonly int MaxDegrees = 180;
+        public const int SERVO1 = 5;
+        public const int SERVO2 = 6;
+        private static Arduino Arduino;
 
         public MainPage()
         {
@@ -37,6 +52,13 @@ namespace gamepadUWP
             GameControllersSetup();
 
             GetRawGameControllers();
+
+            Arduino = new Arduino("COM7", 250000, true, 8000);
+
+            Arduino.pinMode(5, Arduino.SERVO);
+            Arduino.pinMode(6, Arduino.SERVO);
+
+            StopMotors();
 
             var pollingTimer = new Timer();
             pollingTimer.Elapsed += new ElapsedEventHandler(PollTimeEvent);
@@ -127,11 +149,53 @@ namespace gamepadUWP
 
         private void PollRawGameControllers()
         {
+            if (myGamepads.Count <= 0)
+                return;
+
             var gamepad = myGamepads[0];
 
             var reading = gamepad.GetCurrentReading(buttonArray, switchArray, axisArray);
 
+            UpdateDeadZoneStuff();
+
+            UpdateDegrees();
+
             UpdateButtonStatus();
+        }
+
+        private void UpdateDegrees()
+        {
+            degrees[0] = CalculateDegrees(currentRadi[0], Bias(axisArray[0]));
+            degrees[1] = CalculateDegrees(currentRadi[0], Bias(axisArray[1]));
+            degrees[2] = CalculateDegrees(currentRadi[1], Bias(axisArray[2]));
+            degrees[3] = CalculateDegrees(currentRadi[1], Bias(axisArray[3]));
+        }
+
+        private int CalculateDegrees(double radius, double value)
+        {
+            var result = StopDegrees;
+            var scaledValue = 0.00d;
+
+            if (radius <= deadZoneRadius)
+            {
+                return result;
+            }
+
+            scaledValue = 180 * (value + 0.5);
+
+            result = Convert.ToInt32(scaledValue);
+            return result;
+        }
+
+        private void UpdateDeadZoneStuff()
+        {
+            currentRadi[0] = Math.Sqrt(Bias(axisArray[0]) * Bias(axisArray[0]) + Bias(axisArray[1]) * Bias(axisArray[1]));
+            currentRadi[1] = Math.Sqrt(Bias(axisArray[2]) * Bias(axisArray[2]) + Bias(axisArray[3]) * Bias(axisArray[3]));
+        }
+
+        private double Bias(double value)
+        {
+            return value - offsetBias;
         }
 
         private async void UpdateButtonStatus()
@@ -151,15 +215,38 @@ namespace gamepadUWP
                 });
             };
 
-            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            await Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, (Windows.UI.Core.DispatchedHandler)(() =>
             {
-                LeftXValue.Text = axisArray[0].ToString("F6");
-                LeftYValue.Text = axisArray[1].ToString("F6");
-                RightXValue.Text = axisArray[2].ToString("F6");
-                RightYValue.Text = axisArray[3].ToString("F6");
-                DPadXValue.Text = axisArray[4].ToString("F6");
-                DPadYValue.Text = axisArray[5].ToString("F6");
-            });
+                LeftXValue.Text = axisArray[0].ToString("F15");
+                LeftBiasXValue.Text = Bias(axisArray[0]).ToString("F15");
+                LeftXDeg.Text = degrees[0].ToString();
+
+                LeftYValue.Text = axisArray[1].ToString("F15");
+                LeftBiasYValue.Text = Bias(axisArray[1]).ToString("F15");
+                LeftYDeg.Text = degrees[1].ToString();
+
+                RightXValue.Text = axisArray[2].ToString("F15");
+                RightBiasXValue.Text = Bias(axisArray[2]).ToString("F15");
+                RightXDeg.Text = degrees[2].ToString();
+
+                RightYValue.Text = axisArray[3].ToString("F15");
+                RightBiasYValue.Text = Bias(axisArray[3]).ToString("F15");
+                RightYDeg.Text = degrees[3].ToString();
+
+                DPadXValue.Text = axisArray[4].ToString("F15");
+                DPadYValue.Text = axisArray[5].ToString("F15");
+
+                LeftDeadZone.Foreground = Math.Abs(currentRadi[0]) < deadZoneRadius ? DeadzoneActivated : DeadzoneNormal;
+                RightDeadZone.Foreground = Math.Abs(currentRadi[1]) < deadZoneRadius ? DeadzoneActivated : DeadzoneNormal;
+            }));
+        }
+
+        private static async Task StopMotors()
+        {
+            Console.WriteLine("Stopping...");
+            Arduino.servoWrite(SERVO1, 92);
+            Arduino.servoWrite(SERVO2, 92);
+            await Task.Delay(2000);
         }
     }
 }

@@ -37,9 +37,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height=".5*"/>
+                <RowDefinition Height=".3*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height=".5*"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.ColumnSpan="3"  Text="Left Joystick" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
@@ -52,6 +51,17 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
                     <TextBlock x:Name="LeftYValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" Text="Biased" FontSize="12" Foreground="LightCoral" Margin="0,0,5,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="X:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="LeftBiasXValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="LeftBiasYValue" Text="0.000000" FontSize="12" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
 
@@ -68,13 +78,6 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Left Trigger:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
-                    <TextBlock x:Name="LeftTrigger" Text="0.000000" FontSize="12" Foreground="White"/>
-                </StackPanel>
-            </StackPanel>
-
         </Grid>
 
         <Grid Grid.Row="1" Grid.Column="1" BorderBrush="Black" BorderThickness="3">
@@ -84,9 +87,8 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height=".5*"/>
+                <RowDefinition Height=".3*"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height=".5*"/>
             </Grid.RowDefinitions>
 
             <TextBlock Grid.Row="0" Grid.ColumnSpan="3"  Text="Right Joystick" FontSize="12" Foreground="White" HorizontalAlignment="Center"/>
@@ -100,6 +102,17 @@
                     <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
                     <TextBlock x:Name="RightYValue" Text="0.000000" FontSize="12" Foreground="White"/>
                 </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <TextBlock HorizontalAlignment="Center" Text="Biased" FontSize="12" Foreground="LightCoral" Margin="0,0,5,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="X:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="RightBiasXValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
+                    <TextBlock x:Name="RightBiasYValue" Text="0.000000" FontSize="12" Foreground="White"/>
+                </StackPanel>
             </StackPanel>
 
             <TextBlock Grid.Row="1" Grid.Column="1" x:Name="RightDeadZone" Text="DZ" FontSize="12" Foreground="Yellow" VerticalAlignment="Center" HorizontalAlignment="Center"/>
@@ -112,13 +125,6 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="y:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
                     <TextBlock x:Name="RightYDeg" Text="0.000000" FontSize="12" Foreground="White"/>
-                </StackPanel>
-            </StackPanel>
-
-            <StackPanel Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Vertical">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Right Trigger:" FontSize="12" Foreground="Black" Margin="0,0,5,0"/>
-                    <TextBlock x:Name="RightTrigger" Text="0.000000" FontSize="12" Foreground="White"/>
                 </StackPanel>
             </StackPanel>
 

@@ -23,7 +23,7 @@ namespace TestMotors
             Arduino.pinMode(5, Arduino.SERVO);
             Arduino.pinMode(6, Arduino.SERVO);
 
-            StopMotors();
+            await StopMotors();
 
             while(true)
             {
