@@ -53,12 +53,12 @@ namespace gamepadUWP
 
             GetRawGameControllers();
 
-            Arduino = new Arduino("COM7", 250000, true, 8000);
+            Arduino = new Arduino("COM8", 250000, true, 8000);
 
-            Arduino.pinMode(5, Arduino.SERVO);
-            Arduino.pinMode(6, Arduino.SERVO);
+            //Arduino.pinMode(5, Arduino.SERVO);
+            //Arduino.pinMode(6, Arduino.SERVO);
 
-            StopMotors();
+            //StopMotors();
 
             var pollingTimer = new Timer();
             pollingTimer.Elapsed += new ElapsedEventHandler(PollTimeEvent);
@@ -244,8 +244,8 @@ namespace gamepadUWP
         private static async Task StopMotors()
         {
             Console.WriteLine("Stopping...");
-            Arduino.servoWrite(SERVO1, 92);
-            Arduino.servoWrite(SERVO2, 92);
+            //Arduino.servoWrite(SERVO1, 92);
+            //Arduino.servoWrite(SERVO2, 92);
             await Task.Delay(2000);
         }
     }
