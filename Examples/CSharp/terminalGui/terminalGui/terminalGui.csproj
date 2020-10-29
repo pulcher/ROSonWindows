@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="HIDDevices" Version="1.2.11" />
     <PackageReference Include="Terminal.Gui" Version="0.90.3" />
   </ItemGroup>
 

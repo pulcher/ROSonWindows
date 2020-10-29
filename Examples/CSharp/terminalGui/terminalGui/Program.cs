@@ -11,6 +11,7 @@ namespace terminalGui
         private static JoystickView LeftJoystickView;
         private static JoystickView RightJoystickView;
         private static Random Rng;
+        private static ControllerPad GamePad;
 
         static void Main(string[] args)
         {
@@ -19,6 +20,8 @@ namespace terminalGui
 
             Rng = new Random();
 
+            GamePad = new ControllerPad();
+
             Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(100), UpdateJoysticks);
 
             Application.Run();
@@ -26,8 +29,29 @@ namespace terminalGui
 
         private static bool UpdateJoysticks(MainLoop arg)
         {
-            LeftJoystickView.XValue.Text = Rng.NextDouble().ToString();
+            if (!GamePad.Poll()) return true;
+
+            if (LeftJoystickView != null)
+            {
+                AdjustTextField(LeftJoystickView.XValue, GamePad.LeftJoystickX);
+                AdjustTextField(LeftJoystickView.YValue , GamePad.LeftJoystickY);
+                AdjustTextField(LeftJoystickView.XDegree, GamePad.LeftDegreeX);
+                AdjustTextField(LeftJoystickView.YDegree, GamePad.LeftDegreeY);
+            }
+
+            if (RightJoystickView != null)
+            {
+                AdjustTextField(RightJoystickView.XValue, GamePad.RightJoystickX);
+                AdjustTextField(RightJoystickView.YValue, GamePad.RightJoystickY);
+            }
+
             return true;
+        }
+
+        private static void AdjustTextField(TextField textField, double value)
+        {
+            if (textField != null)
+                textField.Text = value.ToString();
         }
 
         private static void SetupDisplay()

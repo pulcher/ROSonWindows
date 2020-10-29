@@ -16,7 +16,7 @@ namespace terminalGui.Views
         public Label YLabel { get; set; }
         public TextField YValue { get; set; }
 
-        public Label XDegreeLable { get; private set; }
+        public Label XDegreeLabel { get; private set; }
         public TextField XDegree { get; set; }
 
         public Label YDegreeLabel { get; private set; }
@@ -60,21 +60,21 @@ namespace terminalGui.Views
             };
             Add(XDegree);
 
-            XDegreeLable = new Label("Servo X:")
+            XDegreeLabel = new Label("Servo X:")
             {
                 X = Pos.Left(XDegree) - 9,
                 Y = 0,
             };
-            Add(XDegreeLable);
+            Add(XDegreeLabel);
 
-            var YDegree = new TextField("180")
+            YDegree = new TextField("180")
             {
                 X = 50,
-                Y = Pos.Bottom(XDegreeLable)
+                Y = Pos.Bottom(XDegreeLabel)
             };
             Add(YDegree);
 
-            YDegreeLabel = new Label("Servo X:")
+            YDegreeLabel = new Label("Servo Y:")
             {
                 X = Pos.Left(YDegree) - 9,
                 Y = Pos.Bottom(XDegree),
