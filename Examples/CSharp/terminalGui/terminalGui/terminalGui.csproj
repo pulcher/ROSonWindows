@@ -7,7 +7,16 @@
 
   <ItemGroup>
     <PackageReference Include="HIDDevices" Version="1.2.11" />
+    <PackageReference Include="System.IO.Ports" Version="5.0.0-rc.2.20475.5" />
     <PackageReference Include="Terminal.Gui" Version="0.90.3" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ThirdParty\" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="robocopy $(TargetDir) \\DESKTOP-DF6PKR3\repos\ROSonWindows\Examples\CSharp\terminalGui\terminalGui\bin\Debug\net5.0 /s /mir" />
+  </Target>
 
 </Project>

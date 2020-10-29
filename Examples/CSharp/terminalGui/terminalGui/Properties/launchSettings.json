@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "terminalGui": {
+      "commandName": "Project",
+      "remoteDebugEnabled": true,
+      "remoteDebugMachine": "DESKTOP-DF6PKR3",
+      "authenticationMode": "None"
+    }
+  }
+}

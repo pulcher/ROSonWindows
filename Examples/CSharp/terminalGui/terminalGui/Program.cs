@@ -1,5 +1,5 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using LattePanda.Firmata;
+using System;
 using Terminal.Gui;
 using terminalGui.Views;
 
@@ -10,19 +10,25 @@ namespace terminalGui
         private const string robotName = "Robot Need A Name";
         private static JoystickView LeftJoystickView;
         private static JoystickView RightJoystickView;
-        private static Random Rng;
         private static ControllerPad GamePad;
+
+        public const int SERVO1 = 5;
+        public const int SERVO2 = 6;
+        private static Arduino Arduino;
 
         static void Main(string[] args)
         {
             Application.Init();
             SetupDisplay();
 
-            Rng = new Random();
-
             GamePad = new ControllerPad();
 
             Application.MainLoop.AddTimeout(TimeSpan.FromMilliseconds(100), UpdateJoysticks);
+
+            Arduino = new Arduino("COM7", 250000, true, 8000);
+
+            Arduino.pinMode(SERVO1, Arduino.SERVO);
+            Arduino.pinMode(SERVO2, Arduino.SERVO);
 
             Application.Run();
         }

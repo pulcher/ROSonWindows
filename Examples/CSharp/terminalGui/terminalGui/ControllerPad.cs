@@ -1,7 +1,6 @@
 ﻿using HIDDevices;
 using HIDDevices.Controllers;
 using System;
-using System.Threading.Tasks;
 
 namespace terminalGui
 {
@@ -45,7 +44,7 @@ namespace terminalGui
             LeftJoystickX = currentGamepad.X;
             LeftJoystickY = currentGamepad.Y;
             LeftDegreeX = UpdateDeadZoneStuff(currentGamepad.X, currentGamepad.Y, deadZoneRadius) ? MapDegree(currentGamepad.X): 92;
-            LeftDegreeY = UpdateDeadZoneStuff(currentGamepad.X, currentGamepad.Y, deadZoneRadius) ?  MapDegree(currentGamepad.Y): 92;
+            LeftDegreeY = UpdateDeadZoneStuff(currentGamepad.X, currentGamepad.Y, deadZoneRadius) ? MapDegree(currentGamepad.Y): 92;
 
             RightJoystickX = 0.00d;
             RightJoystickY = 0.00d;
@@ -66,3 +65,4 @@ namespace terminalGui
         }
     }
 }
+ 
