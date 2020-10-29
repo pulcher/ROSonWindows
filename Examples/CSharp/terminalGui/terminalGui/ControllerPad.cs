@@ -18,6 +18,8 @@ namespace terminalGui
         public double RightJoystickX { get; set; }
         public double RightJoystickY { get; set; }
 
+        public double deadZoneRadius = 0.05d;
+
         public ControllerPad()
         {
             devices = new Devices();
@@ -42,8 +44,8 @@ namespace terminalGui
 
             LeftJoystickX = currentGamepad.X;
             LeftJoystickY = currentGamepad.Y;
-            LeftDegreeX = MapDegree(currentGamepad.X);
-            LeftDegreeY = MapDegree(currentGamepad.Y);
+            LeftDegreeX = UpdateDeadZoneStuff(currentGamepad.X, currentGamepad.Y, deadZoneRadius) ? MapDegree(currentGamepad.X): 92;
+            LeftDegreeY = UpdateDeadZoneStuff(currentGamepad.X, currentGamepad.Y, deadZoneRadius) ?  MapDegree(currentGamepad.Y): 92;
 
             RightJoystickX = 0.00d;
             RightJoystickY = 0.00d;
@@ -54,6 +56,13 @@ namespace terminalGui
         private int MapDegree(double x)
         {
             return Convert.ToInt32(180 * (x + 1.0) / 2);
+        }
+
+        private bool UpdateDeadZoneStuff(double xValue, double yValue, double deadZoneRadius)
+        {
+            var currentRadius = Math.Sqrt(xValue * xValue + yValue * yValue);
+
+            return currentRadius > deadZoneRadius; 
         }
     }
 }
